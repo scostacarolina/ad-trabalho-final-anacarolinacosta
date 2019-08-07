@@ -1,0 +1,411 @@
+---
+title: "What do women think?"
+author: "Ana Carolina Costa"
+date: "07/08/2019"
+output: pdf_document
+
+---
+
+Abstract: Inspired by the recent wave of protests and Woman's March across all South America, this article intends to investigate wether or not women tend to have a less conservative vision on politics. We believe that, indeed, women tend to have a more progressist vision on politics than men in general, and that this difference increases as a woman's educational level also increases. So, basically we are saying that woman in general, for being woman (or made woman as would say Beavoir), tend to be more progressist than man, in addition, high-educated woman tend to be even more progressist than the population in general. To test this idea, we are using a multivariated regression model tested at the R plataform with the dataset provided by the AmericasBarometer.The results found do prove our hypothesis to be true, but not quite right as the feminist theory would predict.
+
+Key-words: gender, progressivism, feminism
+
+# 1. Introduction
+
+First of all, we need to define what is a progressive person in the context of this article and model. There are two meanings for political progressivism used nowadays. There is the economical progressivism, that generally speaking is the idea based of Marx's contribution of his analysis of political economy, and this progressivism is based at the idea that the richer should subsidize the greatest costs towards economical equity. This progressivism is mainly based by social economical theories. This economic view excludes other social factors, as of gender inequality, lgbtphobia and religious dogmatism. Therefore, this article is not interested in this definition of progressivism. 
+
+The second meaning for progressivism is a wider political concept, not only including economical leftists. This political concept is related toward a certain vision of word and society based on Hegel's idea of history as progress out of ignorance and division towards peace and prosperity. The core definition of this progressivism is the belief in reform, in changing society for the better,  related to (and/or manifested practically as) social liberation. It is strongly associated with favouring more rights for women, gay people and minorities. And, this is the concept we are going to work in this article.
+
+Given the social reality in South America, these two definition of progressivism tend to be confused and mistaken as one, and many times they are labeled by leftists parties as one. However,  after delimiting these two definitions, this work is a attempt to determine the influence of gender in this conception of progressivism. As would say Beavouir, "one is not born, but rather becomes, a woman" this existentialist approach is a criticism to a patriarchal society that molds the female existence into a a pattern of expected behavior, a behavior that is socially and historically designed and reinforced through the ages. Today's society is a reflection of this process, so now, what we want to measure is, if a woman, given this gender construction and process, and being aware of this process, tend to be more open to a social liberation and progressivism, not only due to the goodness of her being, but mainly because it benefits her position.
+
+The recent waves of feminism and woman's movement, indicates that, yes, that is a truth behind this idea. Arruza et al (2019) states that since 2016, the movements of "Nin una a menos", "We strike", "Vivas nos queremos", "Times Up",gained strenght in many countries of South America and simbolizes a new wave of feminism, and awarennes not only concerned to gender inequality, but with lgbtphobia, racism, violence and human rights in general. Most recently the "Ele não" Movement in Brazil's electoral process showed us a female protagonism and reaction to the most conservative visions of society that gives curiosity to try to understand the origin of this political behavior. 
+ 
+# 2. Literature Review
+
+# 3. Theory
+
+# 4. Research Design and Data
+
+## 4.1 Data Limitations
+Our analysis theme can be a little tricky to try to measure, especially when we are trying to determine a general pattern whitin a geographic location as large as South America. Although the existence of many political surveys being conducted in each country, they do vary a lot, making it difficult to create a universal dataset for the existing countries. Therefore, we chose to desing our model based on the informations provided by the AmericasBarometer 2017 edition (LAPOP). The Lapop survey has a commom base of questions for all of the South  American countries, we think that is best to have one source of data, then to try to merge many others surveys into one dataset due to the measuremnt patterns of the survey. The Lapop has one standart for population sample and conducting questions, if we had used different sources, it would lead to a bigger problem of coherency and coesion of the final data. 
+
+However, the LAPOP survey has its limits that we are now going to clarify:
+1. The question about abortion asks: "Do you believe that termination of pregnancy, i.e: an abortion, is justified when the mother's health is in danger?" which is different than if asked: "Do you believe that termination of pregnancy, i.e: an abortion, is justified?". As stressed at the theory section, both questions do tell about the progressim or conservadorism within a society, but they show different levels of progressism. We need to keep this in mind, when analysing the results. Sadly, this question was not asked in Guiana in 2017. Therefore, we had to exclude Guiana of our model. And, 2. The Lapop Survey of 2017 still do not include questions regarding drugs decriminalization, what could give more insight about the progressive tendencies of a society. 
+
+## 4.2 Defining our Model and Variables.
+
+The main goal of this article is to test if women tend to have a less conservative vision on politics. To do so, we are going to use a index of progressism as our dependent variable. The Lapop Survey does not provide this variable, so  we are creating one, from existing variables. Our index is going to pontuate higher for progressive positions and less for  conservative positions. To create this variable, we are going to use the information provided in the following questions of the survey as independent variables: 
+
+1. "Do you believe that termination of pregnancy, i.e: an abortion, is justified when the mother's health is in danger?". This is a binary variable with "yes" or "no" answers. If said yes, we assume it is a progressist person. 
+
+2. "Thinking about homosexuals, how much do you approve or disapprove of these people being able to apply for public office". This is a scale from 1 to 10. The closer to 10, more progressist the person is. The closer to 1, more conservative the person is. 
+
+3. "Thinking about homosexuals, how much do you approve or disapprove that gay couples have the right to marry?". Again, this is a scale from 1 to 10. The closer to 10, more progressist the person is. The closer to 1, more conservative the person is. 
+
+So, given our dependent and independt variables, we are going to use gender, education, income, age, race and country as our control variables. The null hypothesis of our model is that woman tend to be less conservative, and our interaction factor is that higly-level educated woman tend to be even less conservative. This work is an observational study of political behavior in South America, it has no intention of manipulate the outcome of this study. The main goal is to analyse and understand the behavior pattern within a society. Our dataset, extracted from the Lapop Base, provides a sample population of 18.245 interviewed questionnaires, and each survey is implemented based on a national probability design, acording to Lapop Foundation  "in some cases oversamples are collected to allow precise analysis of opinion within sub-national regions". The interviewed are of voting-age, interviewed face to face in their households. The sample error of the population is 2,5%. (Except to Equador, Peru and Paraguai, which are 1,9%, 2,4% and 2,4% respectively.) With nothing else to add, we shall go to our found results. 
+
+
+```{r include = FALSE}
+
+# definindo local de trabalho
+setwd("C:/Users/Carol/Desktop/cadeiras-mestrado/ad-davimoreira/ad-trabalhofinal")
+
+# pre processamento de dados
+# requsitando pacotes necessarios
+library(devtools)
+library(foreign)
+library(readstata13)
+library(ggplot2)
+library(RColorBrewer)
+# solicitando abertura das bases de dados #
+
+argentina17 <-read.dta("argentina2017.dta")
+
+bolivia17 <- read.dta("bolivia2017.dta")
+
+brasil17 <- read.dta("brasil2017.dta")
+
+chile17 <- read.dta("chile2017.dta")
+
+colombia17 <- read.dta ("colombia2016.dta")
+
+costarica17 <- read.dta("costarica2016.dta")
+
+equador17 <- read.dta("equador2016.dta")
+
+
+paraguai17 <- read.dta("paraguai2016.dta")
+
+peru17 <- read.dta("peru2017.dta")
+
+uruguai17 <- read.dta("uruguai2017.dta")
+
+venezuela17 <- read.dta("venezuela2016.dta")
+
+# corrigindo variavel Q10NEW ####
+
+head(brasil17$q10new)
+str(brasil17$q10new)
+table(brasil17$q10new)
+# alterando a vq10new para o brasil
+brasil17$q10new <- as.numeric(droplevels(brasil17$q10new))
+
+# alterando a vq10new para a argentina
+
+argentina17$q10new <- as.numeric(droplevels(argentina17$q10new))
+
+# alterando a vq10new para bolivia
+
+bolivia17$q10new <- as.numeric(droplevels(bolivia17$q10new))
+
+# alterando a vq10new para chile
+
+chile17$q10new <- as.numeric(droplevels(chile17$q10new))
+
+# alterando a vq10new para colombia
+colombia17$q10new <- as.numeric(droplevels(colombia17$q10new))
+
+# alterando a vq10new para costa rica
+
+costarica17$q10new <- as.numeric(droplevels(costarica17$q10new))
+
+# alterando a vq10new para equador
+
+equador17$q10new <- as.numeric(droplevels(equador17$q10new))
+
+
+# alterando a vq10new para paraguai
+
+paraguai17$q10new <- as.numeric(droplevels(paraguai17$q10new))
+
+# alterando a vq10new para peru
+
+peru17$q10new <- as.numeric(droplevels(peru17$q10new))
+
+# alterando a vq10new para uruguai
+
+uruguai17$q10new <- as.numeric(droplevels(uruguai17$q10new))
+
+# alterando a vq10new para venezuela
+
+venezuela17$q10new <- as.numeric(droplevels(venezuela17$q10new))
+
+
+
+head(brasil17$q10new)
+table(brasil17$q10new)                                           
+# filtrando as variaveis necessarias para o modelo de cada subset ####
+vars <- c("pais", "w14a", "d5", "d6", "q1", "q2", "etid", "q10new", "ed")
+
+brasil17 <- brasil17[,vars]
+
+argentina17 <- argentina17[,vars]
+
+bolivia17<- bolivia17[,vars]
+
+chile17<- chile17[,vars]
+
+colombia17<- colombia17[,vars]
+
+costarica17<- costarica17[,vars]
+
+equador17<- equador17[,vars]
+
+
+paraguai17<- paraguai17[,vars]
+
+peru17<- peru17[,vars]
+
+uruguai17<- uruguai17[,vars]
+
+venezuela17<- venezuela17[,vars]
+
+# juntar as bases de dados
+
+datasetfinal <- rbind(brasil17,argentina17)
+
+datasetfinal <- rbind(bolivia17,datasetfinal)
+
+datasetfinal <- rbind(chile17,datasetfinal)
+
+datasetfinal <- rbind(colombia17,datasetfinal)
+
+datasetfinal <- rbind(costarica17,datasetfinal)
+
+datasetfinal <- rbind(equador17,datasetfinal)
+
+datasetfinal <- rbind(paraguai17,datasetfinal)
+
+datasetfinal <- rbind(peru17,datasetfinal)
+
+datasetfinal <- rbind(uruguai17,datasetfinal)
+
+datasetfinal <- rbind(venezuela17,datasetfinal)
+
+
+dim(datasetfinal)
+
+
+
+# observar/ tratar/ transformar as variaveis ####
+
+vars
+
+# observar variavel pais
+head(datasetfinal$pais)
+str(datasetfinal$pais)
+
+# observando variavel w14a
+head(datasetfinal$w14a)
+str(datasetfinal$w14a)
+
+table(datasetfinal$w14a)
+# criando variavel dummy para W14
+
+datasetfinal$aborto <- ifelse(datasetfinal$w14a == "Yes, it is justified", 1 , 0 ) 
+# observando a nova variavek
+
+head(datasetfinal$aborto)
+str(datasetfinal$aborto)
+
+# a partir de agora a variavel utilizada no modelo ser? "aborto"
+
+# obsrvar variavel d5
+
+head(datasetfinal$d5)
+str(datasetfinal$d5)
+
+summary(datasetfinal$d5)
+
+
+#observar variavel d6
+
+head(datasetfinal$d6)
+str(datasetfinal$d6)
+
+# observar a variavel renda
+
+head(datasetfinal$q10new)
+str(datasetfinal$q10new)
+
+vars
+# observar a variavel q1 - sexo
+
+
+head(datasetfinal$q1)
+str(datasetfinal$q1)
+
+# tratar a variavel para transforma-la em dummy
+
+datasetfinal$gen <- ifelse(datasetfinal$q1 == "Female", 1 , 0 )
+
+# verificando se deu certo
+
+head(datasetfinal$gen)
+
+str(datasetfinal$gen)
+
+# a partir de agora a variavel que sera utilizada no modelo ? "gen"
+
+# observar a variavel q2 - idade
+
+head(datasetfinal$q2)
+str(datasetfinal$q2)
+
+# observar a variavel etid
+
+head(datasetfinal$etid)
+str(datasetfinal$etid)
+# criando uma segunda variavel dummy para definir ra?a
+# 1 para branco, 0 para n?o branco
+
+datasetfinal$etnia <- ifelse(datasetfinal$etid == "White", 1 , 0 )
+# verificando se est? tudo certo com a nova variavel
+# a partir de agora a variavel utilizada  no modelo sera "etnia"
+
+head(datasetfinal$etnia)
+str(datasetfinal$etnia)
+
+# observar a variavel ed
+
+head(datasetfinal$ed)
+str(datasetfinal$ed)
+
+
+# criando a variavel indice de  progressismo  para formar o modelo ####
+
+datasetfinal$prog <- datasetfinal$d5 + datasetfinal$d6 + datasetfinal$aborto
+
+datasetfinal$prog
+head(datasetfinal$prog)
+summary(datasetfinal$prog)
+
+```
+
+
+# 5. Results 
+```{r include=FALSE}
+# grafico sobre o posicionamento sobre aborto ####
+table(datasetfinal$aborto)
+# criando data frame para o grafico
+g.aborto <- data.frame(posicao = c("Contra", " A favor"), qntd = c(6469,10872))
+
+# grafico de distribuicao de,0 5 raca na pesquisa ####
+
+table(datasetfinal$etnia)
+
+# criando a datafrane para o grafico
+
+g.etnia <- data.frame(Cor = c("Branco", "Nao Branco"), qntd = c(5771,11545))
+```
+## 5.1 Exploratory Analysis of Data
+dummy graph for abortion
+
+```{r include_graphics,echo=FALSE}
+
+
+ggplot(g.aborto, aes(y = qntd, x = posicao )) + 
+  geom_bar(stat = "identity", fill = c("lightcoral", "lightblue")) + 
+  labs(y = "Total", x = "Posicionamento",title = "Posicionameto sobre Aborto\n em caso de risco para Gestante") + theme_classic (base_size = 16,base_family = 'serif')
+```
+
+dummy graph for race
+
+```{r echo=FALSE}
+
+ggplot(g.etnia, aes(y=qntd, x = Cor)) + 
+  geom_bar(stat = "identity", fill = c("tan", "tan4")) +
+  labs ( y = "Total", x = "Cor", title = " Distribuição dos entrevistados por Cor") + theme_classic (base_size = 16,base_family = 'serif')
+
+```
+
+histogram for education levels distribution
+
+```{r include=FALSE}
+
+# histograma de distribui??o dos anos escolares da amostra populacional
+
+## Criando dataframe para histograma
+t.educacao <- table(datasetfinal$ed) #salvando tabela de frequencia
+
+# Definindo dataframe e suas variáveis
+g.educacao <- data.frame(rotulos = names(t.educacao), # rotulo 
+                         frequencia = c(t.educacao),  # frequencia
+                         ordem = 1:length(t.educacao))# ordem dos rotulos
+
+# Reordenando os rotulos para ficarem na ordem crescente
+g.educacao$rotulos <- reorder(g.educacao$rotulos, 
+                              g.educacao$ordem)
+
+## criando dataframe para histograma de renda
+
+t.renda <- table(datasetfinal$q10new)
+
+# definindo df e suas variaveis
+g.renda <- data.frame(rotulos = names(t.renda), frequencia = c(t.renda), ordem = 1:length(t.renda))  
+
+# fazer a ordenação do grafico
+g.renda$rotulos <- reorder(g.renda$rotulos, g.renda$ordem)
+
+
+# criando histograma para apresentar a variavel d.5
+
+t.d5 <- table(datasetfinal$d5)
+
+# definindo o df e suas variaveis
+
+g.d5 <- data.frame(rotulos=names(t.d5), frequencia = c(t.d5), ordem = 1:length(t.d5))
+
+# ordendando o grafico
+g.d5$rotulos <- reorder(g.d5$rotulos, g.d5$ordem)
+
+# criando histograma para apresentar a variavel d.6
+
+t.d6<- table(datasetfinal$d6)
+
+# definindo o df e suas variaveis
+
+g.d6 <- data.frame(rotulos=names(t.d6), frequencia = c(t.d6), ordem = 1:length(t.d6))
+
+# reordenar o grafico
+
+g.d6$rotulos <- reorder(g.d6$rotulos, g.d6$ordem)
+
+
+```
+
+graph 1
+
+```{r echo=FALSE, warning=FALSE}
+ggplot(g.educacao, aes(x = rotulos, y = frequencia)) + # componentes elementares
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico 
+  labs(y = "Frequ?ncia", x = "") + # rotulos 
+  theme_classic(base_size = 16,        # definindo trabalho da letra
+                base_family = 'serif') # definindo tipo da letra
+```
+
+graph 2
+
+```{r echo=FALSE, warning=FALSE}
+ggplot(g.renda, aes(x= rotulos, y = frequencia)) + geom_histogram(stat = "identity") + theme_classic()
+```
+
+graph 3 
+
+```{r echo=FALSE, warning=FALSE}
+ggplot(g.d5, aes(x = rotulos, y = frequencia)) + geom_histogram(stat = "identity") + theme_classic()
+```
+
+graph 4 
+```{r echo=FALSE, warning=FALSE}
+
+ggplot(g.d6, aes(x=rotulos, y=frequencia)) + geom_histogram(stat = "identity") + theme_classic()
+```
+
+
+## 5.2 Regression Model
+
+
+
+
+# 6. Conclusions
