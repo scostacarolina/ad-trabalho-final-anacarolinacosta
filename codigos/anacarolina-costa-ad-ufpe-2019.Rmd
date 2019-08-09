@@ -1,28 +1,78 @@
 ---
-title: "What do women think?"
+title: "Does Feminism means Progressivism?"
 author: "Ana Carolina Costa"
-date: "07/08/2019"
+date: "09/08/2019"
 output: pdf_document
-
+mainfont: Times New Roman
+spacing: double
+fontsize: 12 pt
 ---
 
-Abstract: Inspired by the recent wave of protests and Woman's March across all South America, this article intends to investigate wether or not women tend to have a less conservative vision on politics. We believe that, indeed, women tend to have a more progressist vision on politics than men in general, and that this difference increases as a woman's educational level also increases. So, basically we are saying that woman in general, for being woman (or made woman as would say Beavoir), tend to be more progressist than man, in addition, high-educated woman tend to be even more progressist than the population in general. To test this idea, we are using a multivariated regression model tested at the R plataform with the dataset provided by the AmericasBarometer.The results found do prove our hypothesis to be true, but not quite right as the feminist theory would predict.
+**Abstract:** Inspired by the recent wave of protests and Woman's March across all South America, this article intends to investigate wether or not women tend to have a less conservative vision on politics. We believe that, indeed, women tend to have a more progressist vision on politics than men in general, and that this difference increases as a woman's educational level also increases. So, basically we are saying that woman in general, for being woman (or made woman as would say Beavoir), tend to be more progressist than man, in addition, high-educated woman tend to be even more progressist than the population in general. To test this idea, we are using a multivariated regression model tested at the R plataform with the dataset provided by the AmericasBarometer.The results found do prove our hypothesis to be true, but not quite right as the feminist theory would predict. We used the data provided by the Americas Barometer to make this article possible, therefore, we thank the Latin American Public Opinion Project (LAPOP) and its major supporters for making the data available.
 
-Key-words: gender, progressivism, feminism
+
+
+**Key-words:** Gender; Progressivism; Feminism
+
+  
+   
+  
+   
+
+
+
+
+**GitHub Repository:** [link](www.facebook.com) 
+
+**DataVerse Repository:** [link](www.rstudio.com) 
+
+\newpage
 
 # 1. Introduction
 
-First of all, we need to define what is a progressive person in the context of this article and model. There are two meanings for political progressivism used nowadays. There is the economical progressivism, that generally speaking is the idea based of Marx's contribution of his analysis of political economy, and this progressivism is based at the idea that the richer should subsidize the greatest costs towards economical equity. This progressivism is mainly based by social economical theories. This economic view excludes other social factors, as of gender inequality, lgbtphobia and religious dogmatism. Therefore, this article is not interested in this definition of progressivism. 
+First of all, we need to define what is a progressive person in the context of this article and model. There are two meanings for political progressivism used nowadays. There is the economical progressivism, that generally speaking is the idea based of Marx's contribution in his analysis of political economy, and this progressivism is based at the idea that the richer should subsidize the greatest costs towards economical equity. This progressivism is mainly based by social economical theories. This economic view excludes other social factors, as of gender inequality, lgbtphobia and religious dogmatism. Therefore, this article is not interested in this definition of progressivism. 
 
 The second meaning for progressivism is a wider political concept, not only including economical leftists. This political concept is related toward a certain vision of word and society based on Hegel's idea of history as progress out of ignorance and division towards peace and prosperity. The core definition of this progressivism is the belief in reform, in changing society for the better,  related to (and/or manifested practically as) social liberation. It is strongly associated with favouring more rights for women, gay people and minorities. And, this is the concept we are going to work in this article.
 
 Given the social reality in South America, these two definition of progressivism tend to be confused and mistaken as one, and many times they are labeled by leftists parties as one. However,  after delimiting these two definitions, this work is a attempt to determine the influence of gender in this conception of progressivism. As would say Beavouir, "one is not born, but rather becomes, a woman" this existentialist approach is a criticism to a patriarchal society that molds the female existence into a a pattern of expected behavior, a behavior that is socially and historically designed and reinforced through the ages. Today's society is a reflection of this process, so now, what we want to measure is, if a woman, given this gender construction and process, and being aware of this process, tend to be more open to a social liberation and progressivism, not only due to the goodness of her being, but mainly because it benefits her position.
 
-The recent waves of feminism and woman's movement, indicates that, yes, that is a truth behind this idea. Arruza et al (2019) states that since 2016, the movements of "Nin una a menos", "We strike", "Vivas nos queremos", "Times Up",gained strenght in many countries of South America and simbolizes a new wave of feminism, and awarennes not only concerned to gender inequality, but with lgbtphobia, racism, violence and human rights in general. Most recently the "Ele não" Movement in Brazil's electoral process showed us a female protagonism and reaction to the most conservative visions of society that gives curiosity to try to understand the origin of this political behavior. 
+The recent waves of feminism and woman's movement, indicates that, yes, that is a truth behind this idea. Arruza et al (2019) states that since 2016, the movements of "Nin una a menos", "We strike", "Vivas nos queremos", "Times Up",gained strenght in many countries of South America and simbolizes a new wave of feminism and awarennes not only concerned about gender inequality, but, also about lgbtphobia, racism, violence and human rights in general. Most recently the "Ele não" Movement in Brazil's electoral process showed us a female protagonism and reaction to the most conservative visions of society that gives curiosity to try to understand the origin of this political behavior. 
  
 # 2. Literature Review
 
+According to Kittilson (2016), woman do tend to be more suportive of leftists parties in many countries, but this gender gap varies from country to country or region to region. But another interesting finding is that, despite women tendencies to be more suportive of the leftists parties, the rate of political  participation are bigger among the man. The author states that this rate varies according to the country, time period and type of participation. This reality shock does beg a philosophical question:  Why there always has a gender gap, even among allegedly "comrades"? 
+
+The answer to this may be related to the two different definitions of progressivism exposed earlier in this article. Maybe, woman do tend to be more supportive of the leftists parties because the leftists parties tend to congregate the minorities agenda as their own, this is especially strong at the South America political reality.
+
+But, despite these reflections and questions, truth is, that gender is a powerful determinant for political behavior. As Burns(2007) states that gender is a strong and socially constructed determinant, and interacts with other individual characteristics and the political context, Basically, women are not a monolithic group: gender intersects with other identities such as race, ethnicity, sexuality, and socio-economic status in complex ways. What we don't know yet is how strongly gender relates to progressivism in South America, how the gender effects manipulates the outcomes for beliefs, and how this relatioship it configures without the effect of the economical leftist perceptions. 
+
+To be fair, despite, the new emergence of strong research models taking on the full complexity of gender and its effects. There is a wide theory literature about these intersectionalities involving gender and other variables and minorities that date from 1960s. Separatedely, it is nothing new. But data serves theory, and theory explains data. This work is a attempt to ally theory and data analysis to fully comprehend the gender issue in South America. 
+
 # 3. Theory
+
+
+The second half of the twentieth century for the South American region was a rather politically troubled period. Many dictatorial governments have seized power in this region. Paraguay, Brazil, Argentina, Peru, Bolivia, Uruguay, Ecuador and Chile. These are some of the countries that have at some time or another gone through political coups and dictatorships. Moreover, and also as a result of this conjuncture. A spring of the feminist movement begins in 1968.
+
+As a result, the young generation of 1968 launched itself into resistance, including armed resistance, and several had to leave the country, among them many militant women or wives of men working in leftist parties and organizations. Europe and US were the main destinations, and as describes Pinto (2003) this generation found in Europe a social and cultural upheaval that would mark deeply young women. However, the years in exile revealed a still unknown facet of her partners. In France, the reality was quite different from the south american middle class, where most of these young women had come from, who always resorted to housekeepers for the performance of housework, allowing to camouflage the problems of gender inequality as of social inequallity. In europe, the situation was another: “the comrades in arms proved so traditional and unwilling to divide housework as their bourgeois parents", so these woman started to receive influence from the french's women's movement.
+
+This process lead to the creation of a circle that would become the theoretical and existential support for the feminist debate in South America. Pinto also states that the exiled left-wing, marxist and masculine, saw in this wave of and to realize that they were not the only ones to suffer from the policies
+imposed by the military and patriarchy. 
+
+Gonçalves(2009) believes that the return of exiled women contributed
+for an interaction between the international feminist agenda and that of national women's movements. While women from the popular classes had more claims related To the class dimensions, the returning feminists from exile broughtc back new issues and claims that complemented the agenda. But, a relationship of conflict was established among the women's movements and the feminist movement. Because, the mass media presented the feminist movement as the struggle between the sexes and this position served to consider that all feminists think the same, which gathered  dislike for this feminism. Allied to this, the strong presence of the Catholic Church on women's movements was a stop sign on many of the feminist claims, as was the case for the struggle for decriminalization of abortion. It wasn't until the new emergence of Intersectional feminism, that the woman's movement and feminist movement started to dialogue again and the feminist agenda returned to gain strength in South America.
+
+Some of the origin of the term ‘intersectionality’ is due to the antecedence of the concept of ‘interlocking systems of oppression’.  The intersectional feminism claim  is that women’s lives are constructed by multiple, intersecting systems of oppression. This means that oppression is not a singular process or a binary political relation, but is better understood as constituted by multiple, converging, or interwoven systems. (Carastathis,2014)
+ 
+As said, during the 1980s, there was much controversy about the best way to theorise the relationship between gender, race, class and sexuality. The main differences in feminist approaches tended to be understood broadly in terms of socialist, liberal and radical feminisms, with the question of racism forming a point of conflict across all three. Brah (2004) states that over the last twenty years, the manner in which class is discussed in political, popular and academic discourse has radically changed to the point that, some sociologists have found it embarrassing to talk to research participants about class. This tendency is also evident in government circles as when the discourse on child poverty comes to substitute analysis of wider inequalities of class. But, intersectional feminism it not only about to provide a rivality with class approachs.
+
+Intersectional feminism concerns the intersections or cuts of oppressions and experiences that must be made when analyzing the social structures of domination-exploitation, as well as the subjects that are unfavorably affected by them. For example, intersec feminists argue for gender, gender gap, ethnicity, class, sexual orientation, as it is recognized that women do not all suffer the same oppressions and that women are not always in disadvantageous situation in the power relations in society, because they are not configured only in the patriarchal system considering that there are other systems of oppression.
+
+However, according to Carastathis,2014 depite there are four main analytic benefits imputed to intersectionality as a research methodology or
+theoretical framework: simultaneity, complexity, irreducibility, and inclusivity. There is a reaserch problem on many approachs that when theorizing oppression, tende to privilege a foundational category and either ignore or merely ‘add’ others to it. According to the author, some intersectionality researchs insists that multiple, co-constituting analytic categories are operative and equally salient in constructing institutionalized practices and lived experiences and ignore the difference of influences of these intersections
+in the opression model.
+
+But, despite its limitatitions, the intersectional feminism has proved to be one of the most complete models to explain varieties within society. Also, the intersection feminist movement seen outside the academic research, has been gaining adeherency, and has proved to be one of the most capable to be inclusive. 
+
 
 # 4. Research Design and Data
 
@@ -42,22 +92,26 @@ The main goal of this article is to test if women tend to have a less conservati
 
 3. "Thinking about homosexuals, how much do you approve or disapprove that gay couples have the right to marry?". Again, this is a scale from 1 to 10. The closer to 10, more progressist the person is. The closer to 1, more conservative the person is. 
 
-So, given our dependent and independt variables, we are going to use gender, education, income, age, race and country as our control variables. The null hypothesis of our model is that woman tend to be less conservative, and our interaction factor is that higly-level educated woman tend to be even less conservative. This work is an observational study of political behavior in South America, it has no intention of manipulate the outcome of this study. The main goal is to analyse and understand the behavior pattern within a society. Our dataset, extracted from the Lapop Base, provides a sample population of 18.245 interviewed questionnaires, and each survey is implemented based on a national probability design, acording to Lapop Foundation  "in some cases oversamples are collected to allow precise analysis of opinion within sub-national regions". The interviewed are of voting-age, interviewed face to face in their households. The sample error of the population is 2,5%. (Except to Equador, Peru and Paraguai, which are 1,9%, 2,4% and 2,4% respectively.) With nothing else to add, we shall go to our found results. 
+So, given our dependent and independt variables, we are going to use gender, education, income, age, race, influence of religion and country as our control variables. The alternative hypothesis of our model is that woman tend to be less conservative, and our interaction factor is that higly-level educated woman tend to be even less conservative. This work is an observational study of political behavior in South America, it has no intention of manipulate the outcome of this study. The main goal is to analyse and understand the behavior pattern within a society. Our dataset, extracted from the Lapop Base, provides a sample population of 18.245 interviewed questionnaires, and each survey is implemented based on a national probability design, acording to Lapop Foundation  "in some cases oversamples are collected to allow precise analysis of opinion within sub-national regions". The interviewed are of voting-age, interviewed face to face in their households. The sample error of the population is 2,5%. (Except to Equador, Peru and Paraguai, which are 1,9%, 2,4% and 2,4% respectively.) With nothing else to add, we shall go to our found results. 
 
 
-```{r include = FALSE}
-
-# definindo local de trabalho
+```{r message=FALSE, warning=FALSE, include=FALSE}
 setwd("C:/Users/Carol/Desktop/cadeiras-mestrado/ad-davimoreira/ad-trabalhofinal")
 
 # pre processamento de dados
-# requsitando pacotes necessarios
-library(devtools)
+library(sjPlot)
+library(sjmisc)
+library(dotwhisker)
+library(car)
+library(sjstats)
+library(fields)
 library(foreign)
 library(readstata13)
 library(ggplot2)
 library(RColorBrewer)
-# solicitando abertura das bases de dados #
+library(tidyverse)
+
+# solicitando abertura das bases de dados ####
 
 argentina17 <-read.dta("argentina2017.dta")
 
@@ -82,7 +136,12 @@ uruguai17 <- read.dta("uruguai2017.dta")
 
 venezuela17 <- read.dta("venezuela2016.dta")
 
+
 # corrigindo variavel Q10NEW ####
+
+
+# transformando a q10new  de variavel numerica para categorica
+#  e limpando os niveis de fatores nao utilizados
 
 head(brasil17$q10new)
 str(brasil17$q10new)
@@ -135,7 +194,7 @@ venezuela17$q10new <- as.numeric(droplevels(venezuela17$q10new))
 head(brasil17$q10new)
 table(brasil17$q10new)                                           
 # filtrando as variaveis necessarias para o modelo de cada subset ####
-vars <- c("pais", "w14a", "d5", "d6", "q1", "q2", "etid", "q10new", "ed")
+vars <- c("pais", "w14a", "d5", "d6", "q1", "q2", "etid", "q10new", "ed", "q5b" )
 
 brasil17 <- brasil17[,vars]
 
@@ -182,6 +241,7 @@ datasetfinal <- rbind(uruguai17,datasetfinal)
 
 datasetfinal <- rbind(venezuela17,datasetfinal)
 
+# verificando se est? tudo certo com o novo subset
 
 dim(datasetfinal)
 
@@ -214,7 +274,6 @@ str(datasetfinal$aborto)
 
 head(datasetfinal$d5)
 str(datasetfinal$d5)
-
 summary(datasetfinal$d5)
 
 
@@ -223,10 +282,6 @@ summary(datasetfinal$d5)
 head(datasetfinal$d6)
 str(datasetfinal$d6)
 
-# observar a variavel renda
-
-head(datasetfinal$q10new)
-str(datasetfinal$q10new)
 
 vars
 # observar a variavel q1 - sexo
@@ -251,7 +306,7 @@ str(datasetfinal$gen)
 
 head(datasetfinal$q2)
 str(datasetfinal$q2)
-
+typeof(datasetfinal$q2)
 # observar a variavel etid
 
 head(datasetfinal$etid)
@@ -271,6 +326,17 @@ str(datasetfinal$etnia)
 head(datasetfinal$ed)
 str(datasetfinal$ed)
 
+# observar a variavel importancia da religia "q5b"
+head(datasetfinal$q5b)
+str(datasetfinal$q5b)
+table(datasetfinal$q5b)
+# tratando a variavel - limpando os niveis de fatores nao utilizados
+
+datasetfinal$q5b <- droplevels(datasetfinal$q5b)
+
+# verificando se deu certo
+table(datasetfinal$q5b)
+
 
 # criando a variavel indice de  progressismo  para formar o modelo ####
 
@@ -280,52 +346,133 @@ datasetfinal$prog
 head(datasetfinal$prog)
 summary(datasetfinal$prog)
 
+
 ```
 
 
+\newpage
 # 5. Results 
-```{r include=FALSE}
-# grafico sobre o posicionamento sobre aborto ####
-table(datasetfinal$aborto)
-# criando data frame para o grafico
-g.aborto <- data.frame(posicao = c("Contra", " A favor"), qntd = c(6469,10872))
 
-# grafico de distribuicao de,0 5 raca na pesquisa ####
+## 5.1 Regression Model
+
+**Regression Table**
+```{r echo=FALSE, fig.height=2, fig.width=2, message=FALSE, warning=FALSE}
+
+# criando o modelo de regressão #### 
+reg01 <- lm(data= datasetfinal, prog ~ gen + ed + q2 + etnia + q5b + q10new + pais )
+
+# tabela da regressao 
+summary(reg01)
+```
+\newpage
+
+**Confidence Intervals for Regression Coefficients**
+```{r echo=FALSE}
+confint(reg01)
+
+```
+
+**Regression Plot**
+
+```{r echo=FALSE, fig.height=4.5, fig.width=7}
+dwplot(reg01)
+```
+
+Given our model one, the regression model tables give us many insights. First, the p-value of the model is significant in less than 0,05 in the majority of our variables. Except for the ethinicity variable, that is only significant at the 0,1 value. Which means that our alternative hypothesis is validated, showing us a connection between gender and progressivism. Yes, woman tend to be more progressive than man. 
+
+Secondly  the information we can extract from the T-Value is very promissing. A larger t-value indicates that it is less likely that the coefficient is not equal to zero purely by chance. So, higher the t-value, the better. Evaluating out T-value, We observe that the strongests values appear in the Country variable Uruguay (22.9), the religious importance - Not important at all variable (16.3), the educational level variable (16.2), Country variable Brazil (14.9) and the gender variable (13.7). 
+
+So, simply, what we can infer from this is, yes, gender is a important factor that determines a progressivism level on a person. But, there are other major important factor, if this person lives in Uruguay, it is a very important determinant to  explain the effect of progressivism level. Surprisingly, Brazil also scores high as a determinant. The importance given to religion and the levels of education of the person, also are very important to determine the progressivism. The predicitions of the model are better fitted, when someone is from Uruguai or Brazil, if the person doesn't give any importance to religion, if this person is higly-educated, and if she is a woman, the human being has a large probability of being a progressive person and to score very high in the index of progressivism. 
+
+
+The adjusted R-squared is the proportion of variation in the dependent variable, in this case progressivism, has been explained by the model. The R2 of model one is of (0.2472), meaning a high explanatory power: our model explains 24,72% of the variation of the model. Below, we ilustrate our confindence intervals for each variable. The results show a 95% percent confidence. And at the levels of Uruguay, Brazil, Religious Importance - Not important, educational years and gender, these interecations are even stronger. And in the  regression graphic, we can better visualize, the data and model distribution. 
+
+\newpage
+## 5.2 Interactive Hypothesys
+
+**Regression Model**
+
+```{r echo=FALSE}
+
+# testando a hipótese interativa
+
+reg02 <- lm(data= datasetfinal, prog ~ gen + ed + gen*ed + q2 + etnia + q5b + q10new + pais )
+
+# resultado do modelo testando a h.interativa
+
+summary(reg02)
+
+```
+\newpage
+**Confidence Intervals for Regression Coefficients**
+```{r echo=FALSE}
+confint(reg02)
+```
+
+**Regression Plot**
+
+
+```{r echo=FALSE, fig.height=4, fig.width=7}
+# grafico do segundo modelo
+
+dwplot(reg02)
+```
+\newpage
+Our second model, that tests our interactive hypothesys show us a few changes from the first model. Equal to our first model, the p-value of the model is significant in less than 0,05 in the majority of our variables. Except for the ethinicity variable, that is only significant at the 0,1 value. Our interactive effect between gender and educational level is significant at the p-value of 0,01. Which means that our interactive hypothesis is validated, showing us a connection between gender and educational level that affects greatly progressivism. So, Yes, higly-educated woman tend to be more progressive than not so higly-educated woman. Higly-educated Woman tend to be more progressive than higly-educated man. And, mostly important  higly-educated woman tend to be even more progressive than not so higly-educated man.   
+
+Again, the information we can extract from the T-Value is very promissing. A larger t-value indicates that it is less likely that the coefficient is not equal to zero purely by chance. So, higher the t-value, the better. Evaluating out T-value, We observe that the strongests values appear in the Country variable Uruguay (22.8), the religious importance - Not important at all variable (16.2), the educational level variable (14.3), Country variable Brazil (14.8), And this time, Country variable Argentina appears (13.05), but, the gender variable decreases its value from the first model ( now to 7.9), what indicates, that once the interaction of educational level is measured, gender starts to loose its causual interaction force. 
+
+
+The adjusted R-squared is the proportion of variation in the dependent variable, in this case progressivism, has been explained by the model. The R2 of this second model is of (0.2477), showing no sign of variation. Is still means a high explanatory power: this model explains 24,77% of the variation of the model. 
+
+Above, we ilustrate our confindence intervals for each variable. The results show a 95% percent confidence. And at the levels of Uruguay, Brazil, Religious Importance - Not important, educational years and gender, these interecations are even stronger. And in the  regression graphic, we can better visualize, the data and model distribution. It is basically the same from the first model. 
+\newpage
+**Graphic of the Interaction**
+
+```{r echo=FALSE, fig.height=4, fig.width=7}
+
+# grafico do teste da hipotese interativa
+plot_model(reg02,type = "pred", terms = "ed", "gen")
+```
+
+This graphic show us the interactive factor, note that it show us a positive effect. The higher the years of education, higher it is the effect in our dependent variable. The higly-educated a person is, the bigger is the affect on its level of progressivism. Below, we see the Anova Table, note that our partial F-statistic is of (10.22), and the p-value is significant at 0,001, which statistically is a excellent result. So, we can conclude the interactive effect is real.  
+
+**Anova Table**
+```{r echo=FALSE}
+anova(reg01,reg02)
+```
+\newpage
+# 6. Conclusions
+
+Given our previous debate, and the data results. Is possible to infer that gender is a  powerful determinant factor of progressivism as related to social liberation and minorities agenda. But it cannot be seen as the one and most important. First of all, educational level it is just as important, or maybe more.
+
+Also in the political and social context of Latin America, nationality tends to have a strong effect. AS we've seen, our model predicts and its better fitted in countries like Uruguay, Brazil and Argentina. Meanwhile, Peru, Paraguay and Equador tend to have a negative effect on the dependent variable. Another important factor is the religion. Now, we can prove statistically that the lack of influence of religion has a positive effect in the level of progressivism.
+
+This model has its limitation, of course. if we were be extremally faithful to the theory of progressivism. We  do need to add to the index of progressivism more variable measuring drugs decrimalization acceptance, more variables to measure sexual tolerance properly, to add a variable of state secularity, and most importantly, a variable measuring abortion acceptance without restricting health risk. But these limitations were out of capacity to control. 
+
+
+# 7. Methodological Appendix
+## 7.1 Exploratory Analysis of Data
+*Note: All graphics and plots within this article were made by the author, using the Lapop Database as source and the R program as plataform.* 
+
+```{r include=FALSE}
+# todos as tabelas e dataframes dos graficos 
+# tabela do grafico de posicionamento do aborto
+table(datasetfinal$aborto)
+
+# criando data frame para o grafico
+g.aborto <- data.frame(posicao = c("Against", "Accepts"), qntd = c(6469,10872))
+
+# tabela do grafico de distribuicao de raca da amostra
 
 table(datasetfinal$etnia)
 
 # criando a datafrane para o grafico
 
-g.etnia <- data.frame(Cor = c("Branco", "Nao Branco"), qntd = c(5771,11545))
-```
-## 5.1 Exploratory Analysis of Data
-dummy graph for abortion
-
-```{r include_graphics,echo=FALSE}
+g.etnia <- data.frame(Cor = c("Not White", "White"), qntd = c(11545,5771))
 
 
-ggplot(g.aborto, aes(y = qntd, x = posicao )) + 
-  geom_bar(stat = "identity", fill = c("lightcoral", "lightblue")) + 
-  labs(y = "Total", x = "Posicionamento",title = "Posicionameto sobre Aborto\n em caso de risco para Gestante") + theme_classic (base_size = 16,base_family = 'serif')
-```
-
-dummy graph for race
-
-```{r echo=FALSE}
-
-ggplot(g.etnia, aes(y=qntd, x = Cor)) + 
-  geom_bar(stat = "identity", fill = c("tan", "tan4")) +
-  labs ( y = "Total", x = "Cor", title = " Distribuição dos entrevistados por Cor") + theme_classic (base_size = 16,base_family = 'serif')
-
-```
-
-histogram for education levels distribution
-
-```{r include=FALSE}
-
-# histograma de distribui??o dos anos escolares da amostra populacional
-
-## Criando dataframe para histograma
+# Criando dataframe para histograma da variavel ed
 t.educacao <- table(datasetfinal$ed) #salvando tabela de frequencia
 
 # Definindo dataframe e suas variáveis
@@ -333,79 +480,366 @@ g.educacao <- data.frame(rotulos = names(t.educacao), # rotulo
                          frequencia = c(t.educacao),  # frequencia
                          ordem = 1:length(t.educacao))# ordem dos rotulos
 
-# Reordenando os rotulos para ficarem na ordem crescente
-g.educacao$rotulos <- reorder(g.educacao$rotulos, 
-                              g.educacao$ordem)
-
-## criando dataframe para histograma de renda
-
+# tabela do histograma de renda
 t.renda <- table(datasetfinal$q10new)
 
 # definindo df e suas variaveis
-g.renda <- data.frame(rotulos = names(t.renda), frequencia = c(t.renda), ordem = 1:length(t.renda))  
+g.renda <- data.frame(rotulos = names(t.renda), frequencia = c(t.renda), ordem = 1:length(t.renda))
 
-# fazer a ordenação do grafico
-g.renda$rotulos <- reorder(g.renda$rotulos, g.renda$ordem)
-
-
-# criando histograma para apresentar a variavel d.5
-
+# tabela da variavel d5
 t.d5 <- table(datasetfinal$d5)
 
 # definindo o df e suas variaveis
 
 g.d5 <- data.frame(rotulos=names(t.d5), frequencia = c(t.d5), ordem = 1:length(t.d5))
 
-# ordendando o grafico
-g.d5$rotulos <- reorder(g.d5$rotulos, g.d5$ordem)
-
-# criando histograma para apresentar a variavel d.6
-
+# tabela da variavel d6
 t.d6<- table(datasetfinal$d6)
 
 # definindo o df e suas variaveis
 
 g.d6 <- data.frame(rotulos=names(t.d6), frequencia = c(t.d6), ordem = 1:length(t.d6))
 
+# variavel prog
+t.prog<- table(datasetfinal$prog) #salvando tabela de frequencia de prog 
+
+# Definindo dataframe e suas variáveis
+g.prog <- data.frame(rotulos = names(t.prog), # rotulo 
+                         frequencia = c(t.prog),  # frequencia
+                         ordem = 1:length(t.prog))# ordem dos rotulos
+
+# grafico de aceitacao do aborto por gênero ####
+# criando a tabela
+
+t.abortogen <- table(datasetfinal$aborto, datasetfinal$gen)
+
+
+
+# definindo o nome das linhas da tabela
+row.names(t.abortogen) <- c("Against", "Accepts")
+
+
+
+# definindo o nome das colunas da tabela
+
+colnames(t.abortogen) <- c("male", "female")
+
+
+
+# crinado o df para o grafico
+
+g.abortogen <- data.frame( aborto = c("Against Abortion","Accepts Abortion", "Against Abortion", "Accepts Abortion"),
+                           sexo = c("male","male", "female", "female"),
+                           frequencia = c(3170, 5452, 3299, 5420))
+
+
+```
+
+```{r echo=FALSE, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+
+# grafico sobre o posicionamento sobre aborto ####
+
+
+ggplot(g.aborto, aes(y = qntd, x = posicao )) + 
+  geom_bar(stat = "identity", fill = c("lightcoral", "lightblue")) + 
+  labs(y = "Total", x = "Position",title = "Acceptance of Abortion in case of\n risk for the mother") + theme_classic (base_size = 16,base_family = 'serif')
+
+# grafico de distribuiçao de raca na pesquisa ####
+
+ggplot(g.etnia, aes(y=qntd, x = Cor)) + 
+  geom_bar(stat = "identity", fill = c("tan4", "tan")) +
+  labs ( y = "Total", x = "Color", title = " Distribution of Sample by Color") + theme_classic (base_size = 16,base_family = 'serif')
+
+# criando histogramas ####
+
+# histograma de distribuicao dos anos escolares da amostra populacional ####
+
+# Reordenando os rotulos para ficarem na ordem crescente
+g.educacao$rotulos <- reorder(g.educacao$rotulos, 
+                              g.educacao$ordem)
+
+ggplot(g.educacao, aes(x = rotulos, y = frequencia)) + # componentes elementares
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico 
+  labs(y = "Frequency", x = "Completed Years of Education", title = "Distribution of Sample\n By Educational Level") + # rotulos 
+  theme_classic(base_size = 16,        # definindo trabalho da letra
+                base_family = 'serif') # definindo tipo da letra
+
+## criando dataframe para histograma de renda ####
+  
+
+# fazer a ordenação do grafico
+g.renda$rotulos <- reorder(g.renda$rotulos, g.renda$ordem)
+
+# gerando o grafico
+ggplot(g.renda, aes(x= rotulos, y = frequencia)) + # componentes elementares 
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico
+    labs(y = "Frequency", x = "Levels of Income", title = "Distribution of Sample\n By Incomes Levels") + # rotulos 
+  theme_classic(base_size = 16,        # definindo trabalho da letra
+                base_family = 'serif') # definindo tipo da letra
+
+
+
+# criando histograma para apresentar a variavel d.5 ####
+
+# ordendando o grafico
+g.d5$rotulos <- reorder(g.d5$rotulos, g.d5$ordem)
+
+# solicitando o grafico
+ggplot(g.d5, aes(x = rotulos, y = frequencia)) + # componentes elementares 
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico
+  labs(y = "Frequency", x = "Gay People in Public Office", title = "Distribution of Sample by\n Acceptance of Gay People in Public Office") + # rotulos 
+  theme_classic(base_size = 16,        # definindo trabalho da letra
+                base_family = 'serif') # definindo tipo da letra
+
+
+# criando histograma para apresentar a variavel d.6 ####
+
+
 # reordenar o grafico
 
 g.d6$rotulos <- reorder(g.d6$rotulos, g.d6$ordem)
 
+# solicitando o grafico
 
-```
-
-graph 1
-
-```{r echo=FALSE, warning=FALSE}
-ggplot(g.educacao, aes(x = rotulos, y = frequencia)) + # componentes elementares
-  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico 
-  labs(y = "Frequ?ncia", x = "") + # rotulos 
+ggplot(g.d6, aes(x=rotulos, y=frequencia)) + # componentes elementares 
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico
+  labs(y = "Frequency", x = "Gay People Marriage", title = "Distribution of Sample by\n Acceptance of Gay People Marriage") + # rotulos 
   theme_classic(base_size = 16,        # definindo trabalho da letra
                 base_family = 'serif') # definindo tipo da letra
+
+
+
+# criando histograma para a variavel dependente prog ####
+
+# Reordenando os rotulos para ficarem na ordem crescente
+g.prog$rotulos <- reorder(g.prog$rotulos,g.prog$ordem)
+
+ggplot(g.prog, aes(x = rotulos, y = frequencia)) + # componentes elementares
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico 
+  labs(y = "Frequency", x = " Progressive Index", title = "Distribution of Sample by\n Progressive Index") + # rotulos 
+  theme_classic(base_size = 16,        # definindo trabalho da letra
+                base_family = 'serif') # definindo tipo da letra
+
 ```
 
-graph 2
+```{r echo=FALSE, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+#  criando graficos bivariados ####
 
-```{r echo=FALSE, warning=FALSE}
-ggplot(g.renda, aes(x= rotulos, y = frequencia)) + geom_histogram(stat = "identity") + theme_classic()
+# gerar o grafico de aceitacao de aborto por genero 
+
+ggplot(g.abortogen, aes(x= sexo, y = frequencia, fill=aborto)) + 
+  geom_bar(stat = "identity") + 
+  labs(x = "Gender", y = "Frequency", fill = "Abortion", title = "Position on Abortion\n Subdivided by Gender" ) + 
+  theme_classic()
+
+# aceitação do aborto por raça ####
+
+# criando a tabela da aceitacao do aborto por raca 
+t.abortetnia <- table(datasetfinal$aborto, datasetfinal$etnia)
+
+
+# colocando o nome das linhas da tabela
+row.names(t.abortetnia) <- c("contra", "aceita")
+
+
+
+# colocando o nome das colunas
+
+colnames(t.abortetnia) <- c("não branco", "branco")
+
+
+
+# ajustanto os valores para porcentagens
+t.abortetnia[,"não branco"] <- t.abortetnia[,"não branco"] / sum(t.abortetnia[,"não branco"]) 
+t.abortetnia[,"branco"] <- t.abortetnia[, "branco"] /sum(t.abortetnia[,"branco"])
+
+
+# construindo o dataframe para o grafico
+
+g.abortetnia <- data.frame(aborto = c("Against Abortion", "Accepts Abortion", "Against Abortion", "Accepts Abortion"),
+                           cor = c("Not White", "Not White", "White", "White"), 
+                           frequencia = c(37.31, 62.68,36.54,63.45))
+
+ 
+# gerar o grafico
+
+ggplot(g.abortetnia, aes(x = cor,y = frequencia, fill = aborto)) + geom_bar(stat = "identity") + labs(x = "Color", y = "Frequency", fill = "Abortion", title = "Position on Abortion\n Subdivided by Color" ) + theme_classic()
+
+# gerando boxplots ####
+
+# boxplot para apresentar renda ####
+
+g.brenda <- data.frame( renda = datasetfinal$q10new)
+
+ggplot(g.brenda, aes(y = renda )) + geom_boxplot() + labs(y = "Income", title = "Income Levels Distribution Boxplot") +  theme_classic() 
+
+
+# boxplot de anos de educação ####
+
+g.bed <- data.frame(educ = datasetfinal$ed)
+
+ggplot(g.bed, aes(y= educ)) + geom_boxplot() + labs(y = "Educational Years", title = "Educational Levels Distribution Boxplot") + theme_classic()
+
+
+# boxplot bivariado 
+# anos de educação por gênero ####
+g.gened <- data.frame(educ = datasetfinal$ed, gen = datasetfinal$gen)
+g.gened$gen <- ifelse(g.gened$gen == 1, "Mulher", "Homem")
+g.gened <- na.omit(g.gened)
+
+ggplot(g.gened, aes(y =educ, x = gen)) + geom_boxplot() + labs(y = "Educational Years", x = "Gender", title = "Educational Levels X Gender Distribution  Boxplot")+ theme_classic()
+
+
+
 ```
 
-graph 3 
+## 7.2 Regression Model Pressuposts
 
-```{r echo=FALSE, warning=FALSE}
-ggplot(g.d5, aes(x = rotulos, y = frequencia)) + geom_histogram(stat = "identity") + theme_classic()
+## 7.2.1 Model One Assumptions
+
+
+*Residuals Graphic*
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+
+# contruindo ggplot para o modelo de regressao
+residuals(reg01)
+
+
+predict(reg01)
+```
+```{r include_graphics, echo=FALSE, message=FALSE, warning=FALSE}
+dreg01 <- data.frame(residuos = residuals(reg01), preditos = predict(reg01))
+
+ggplot(dreg01, aes(x = preditos, y = residuos)) + geom_point() + geom_abline(slope = 0, intercept = 0) + theme_classic()
 ```
 
-graph 4 
-```{r echo=FALSE, warning=FALSE}
+Homoscedasticity is the property of erring homogeneously. In an ideal model, the model is expected to be homoscedastic, since we take the model parameters as the average effect of the independent variables. Graphically, homoscedasticity through lack of pattern in a dot chart.
 
-ggplot(g.d6, aes(x=rotulos, y=frequencia)) + geom_histogram(stat = "identity") + theme_classic()
+However, note that in this case of this model, there is a very obvious pattern in the dispersion of the points, which indicates hints of heterostecity. Therefore, this model does not fit firmly with the assumption of homostecity.
+
+What could be done to regulate these hints of heterostecity in the model is if the prog variable of the model were an already existing index variable  in the Lapop dataset, not one created from existing variables.
+
+*Residuals Mean*
+```{r echo=FALSE}
+
+# solicitando a media dos residuos
+
+mean(residuals(reg01))
+```
+
+A regression model, in principle, should minimize the sum of the squares of the residuals. If all goes well, a byproduct of this process should be a distribution of the model's waste - of the residuals, only without squaring - which has an mean centered on 0. As we can see, the residuals mean is centered on 0. Therefore we can accept this assumption. The first model fits the assumption of the resisuals mean.
+
+*Residuals Distribution*
+```{r echo=FALSE, }
+# solicitando distribuicao dos residuos
+
+hist(residuals(reg01))
+```
+
+In addition to the residuals mean of 0, one of the assumptions of a regression model is that residual must have  a normal distribution. This is an important assumption because, when estimating the parameters and minimizing the sum of the squares of the residuals, a regression model performs several normalization operations. As expected, this process should result in a residual distribution that mirrors characteristics of the dependent variable distribution, such as normality in the variable distribution.
+
+There is an intuition behind this operation. Remember that the dependent variable must have a normal distribution and that, by definition, consists of a deterministic component and a random component. A regression model tries to extract the deterministic component of the Dependent Variable, in our case, the progression index and leave the random portion in the residuals. If the residuals do not have a normal distribution, it would be a sign that the progression index has no normal distribution or that deterministic components were accidentally left within the model. But as you can see from the graph, the distribution of residuals is normal. Therefore, this first model fits the assumption of normal distribution, and is also valid according to this parameter.
+\newpage
+*Multicolinearity*
+```{r echo=FALSE}
+# verificando a multicolineariedade
+
+library(car)
+vif(reg01) 
+```
+Multicollinearity means one thing: independent variables are not independent of each other. This is problematic since one of the assumptions necessary for model estimation is that each independent variable measures a specific component of the dependent variable. If independent variables share common components means that the average effect of each variable will be the result of a mixture of specific components and components common to other independent variables.
+
+As we can see in this first model, the Vif function is less than 2 for all variables. Therefore there are no indications of multicollinarity in any variable. The model is accepted on the assumption.
+
+## 7.2.2 interactive hypothesis Model Assumptions
+
+*Residuals Graphic*
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+
+# solicitando grafico de homecedasticidade
+
+# construindo ggplot para o modelo de regressao
+residuals(reg02)
+
+
+predict(reg02)
 ```
 
 
-## 5.2 Regression Model
+Again, note that in this case of this nteractive hypothesis Model, we see one more time the same very obvious pattern in the dispersion of the points, which indicates hints of heterostecity. Therefore, this model does not fit firmly with the assumption of homostecity.
+
+What could be done to regulate these hints of heterostecity in the model is if the prog variable of the model were an already existing index variable  in the Lapop dataset, not one created from existing variables. The same solution to the first model. 
+
+```{r echo=FALSE}
+# criacao do dataframe do ggplot
+dreg02 <- data.frame(residuos = residuals(reg02), preditos = predict(reg02))
+
+# solicitando o ggplot
+ggplot(dreg02, aes(x = preditos, y = residuos)) + geom_point() + geom_abline(slope = 0, intercept = 0) + theme_classic()
+
+```
+
+
+*Residuals Mean*
+```{r echo=FALSE}
+
+# solicitando a media dos residuos
+
+mean(residuals(reg02))
+```
+Again, a regression model, in principle, should minimize the sum of the squares of the residuals. If all goes well, a byproduct of this process should be a distribution of the model's waste - of the residuals, only without squaring - which has an mean centered on 0. As we can see, again,  the residuals mean is centered on 0. Therefore we can accept this assumption. The  interactive hypothesis model fits the assumption of the resisuals mean.
+*Residuals Distribution*
+```{r echo=FALSE}
+# solicitando distribuicao dos residuos
+
+hist(residuals(reg02))
+
+```
+
+As said before, one of the assumptions of a regression model is that residuals must have  a normal distribution. This is an important assumption because, when estimating the parameters and minimizing the sum of the squares of the residuals, a regression model performs several normalization operations. As expected, this process should result in a residual distribution that mirrors characteristics of the dependent variable distribution, such as normality in the variable distribution.
+
+There is an intuition behind this operation. Remember that the dependent variable must have a normal distribution and that, by definition, consists of a deterministic component and a random component. A regression model tries to extract the deterministic component of the Dependent Variable, in our case, the progression index and leave the random portion in the residuals. If the residuals do not have a normal distribution, it would be a sign that the progression index has no normal distribution or that deterministic components were accidentally left within the model. But as you can see from the graph, the distribution of residuals is normal. Therefore, this second model containg the interactive hypothesis, also fits the assumption of normal distribution, and is valid according to this parameter.
+\newpage
+*Multicolinearity*
+```{r echo=FALSE}
+# verificando a multicolineariedade
+
+vif(reg02) 
+```
+
+Again, multicollinearity means one thing: independent variables are not independent of each other. This is problematic since one of the assumptions necessary for model estimation is that each independent variable measures a specific component of the dependent variable. If independent variables share common components means that the average effect of each variable will be the result of a mixture of specific components and components common to other independent variables.
+
+As we can see from this interactive hypothesis model, the Vif function is less than 2 for almost all variables. Therefore there are no indications of multicollinarity. In the gen variable and the gen: ed interaction. If there are slight indications of multicollinearity between these two variables, the Vif function assumes values of 2.81 and 2.95, respectively.
+
+# 8. Bibliography
+
+**ARRUZZA**, Cinzia; BHATTACHARYA, Tithi; FRASER, Nancy. Feminismo para os 99%: um manifesto. Boitempo Editorial, 2019.
+
+**BRAH**, Avtar; PHOENIX, Ann. Ain’t IA woman? Revisiting intersectionality. Journal of international women's studies, v. 5, n. 3, p. 75-86, 2004.
+
+**BURNS**, Nancy. Gender in the Aggregate, Gender in the Individual, Gender and Political Action. Politics & Gender. 3. 104 - 124. 10.1017/S1743923X07221014. (2007)
+
+**CARASTATHIS**, Anna. The Concept of Intersectionality in Feminist Theory. Philosophy Compass. 9. 10.1111/phc3.12129. (2014).
+
+**DataSource:** The AmericasBarometer by the Latin American Public Opinion Project (LAPOP), www.LapopSurveys.org.
+
+**DE BEAUVOIR**, Simone. The second sex. Vintage, 2012.
+
+**GONÇALVES**, Renata. O feminismo marxista de Heleieth Saffioti. Lutas Sociais, n. 27, p. 119-131, 2011.
+
+**GONÇALVES**, Renata. Sem pão e sem rosas: do feminismo marxista impulsionado pelo Maio de 1968 ao academicismo de gênero. Lutas Sociais, n. 21/22, p. 98-110, 2009.
+
+**HEGEL**, G. W. F (1977) Phenomenology of Spirit. Trans. AV Miller. Oxford: Oxford University Press, 1807.
+
+**KITTILSON**, Miki Caul. "Gender and Political Behavior." Oxford Research Encyclopedia of Politics. 9 May. 2016; Accessed 8 Aug. 2019. https://oxfordre.com/politics/view/10.1093/acrefore/9780190228637.001.0001/acrefore-9780190228637-e-71.
+
+**MARX**, Karl. Kapital [Capital]. Marx K., Engels F. Sochineniya [Works], v. 23, p. 5, 1960.
+
+**PINTO**, C. R. J.. Uma história do feminismo no Brasil. São Paulo: Perseu Abramo, (2003). 
 
 
 
 
-# 6. Conclusions
+

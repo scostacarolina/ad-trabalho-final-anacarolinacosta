@@ -2,19 +2,30 @@
 # analise de dados
 # trabalho final
 
-# vd: indice de conservadorismo
+# vd: indice de progressismo
 
 #  hipotese: mulheres tendem a ser menos conservadores 
 # hinterativva: educacao afeta o efeito de g?nero sobre o progressimo.
 
-# variavel de controle: sexo, escolaridade, renda, idade, ra?a , pa?s
+# variavel de controle: sexo, escolaridade, renda, idade, raca , religiao, pais
 setwd("C:/Users/Carol/Desktop/cadeiras-mestrado/ad-davimoreira/ad-trabalhofinal")
 
+
+install.packages((c("sjPlot", "sjmisc")), dependencies = T)
+
+
 # pre processamento de dados
+library(sjPlot)
+library(sjmisc)
+library(dotwhisker)
+library(car)
+library(sjstats)
+library(fields)
 library(foreign)
 library(readstata13)
 library(ggplot2)
 library(RColorBrewer)
+library(tidyverse)
 # solicitando abertura das bases de dados ####
 
 argentina17 <-read.dta("argentina2017.dta")
@@ -31,7 +42,6 @@ costarica17 <- read.dta("costarica2016.dta")
 
 equador17 <- read.dta("equador2016.dta")
 
-guiana17 <- read.dta13("guiana2016.dta")
 
 paraguai17 <- read.dta("paraguai2016.dta")
 
@@ -41,10 +51,12 @@ uruguai17 <- read.dta("uruguai2017.dta")
 
 venezuela17 <- read.dta("venezuela2016.dta")
 
-# 
-
 
 # corrigindo variavel Q10NEW ####
+
+
+# transformando a q10new  de variavel numerica para categorica
+#  e limpando os niveis de fatores nao utilizados
 
 head(brasil17$q10new)
 str(brasil17$q10new)
@@ -75,9 +87,6 @@ costarica17$q10new <- as.numeric(droplevels(costarica17$q10new))
 
 equador17$q10new <- as.numeric(droplevels(equador17$q10new))
 
-# alterando a vq10new para guiana
-
-guiana17$q10new <- as.numeric(droplevels(guiana17$q10new))
 
 # alterando a vq10new para paraguai
 
@@ -100,7 +109,7 @@ venezuela17$q10new <- as.numeric(droplevels(venezuela17$q10new))
 head(brasil17$q10new)
 table(brasil17$q10new)                                           
 # filtrando as variaveis necessarias para o modelo de cada subset ####
-vars <- c("pais", "w14a", "d5", "d6", "q1", "q2", "etid", "q10new", "ed")
+vars <- c("pais", "w14a", "d5", "d6", "q1", "q2", "etid", "q10new", "ed", "q5b" )
 
 brasil17 <- brasil17[,vars]
 
@@ -116,7 +125,6 @@ costarica17<- costarica17[,vars]
 
 equador17<- equador17[,vars]
 
-guiana17<- guiana17[,vars]
 
 paraguai17<- paraguai17[,vars]
 
@@ -181,7 +189,6 @@ str(datasetfinal$aborto)
 
 head(datasetfinal$d5)
 str(datasetfinal$d5)
-
 summary(datasetfinal$d5)
 
 
@@ -194,6 +201,8 @@ str(datasetfinal$d6)
 
 head(datasetfinal$q10new)
 str(datasetfinal$q10new)
+
+datasetfinal$q10new <- as.numeric(droplevels(datasetfinal$q10new))
 
 vars
 # observar a variavel q1 - sexo
@@ -218,7 +227,7 @@ str(datasetfinal$gen)
 
 head(datasetfinal$q2)
 str(datasetfinal$q2)
-
+typeof(datasetfinal$q2)
 # observar a variavel etid
 
 head(datasetfinal$etid)
@@ -238,6 +247,17 @@ str(datasetfinal$etnia)
 head(datasetfinal$ed)
 str(datasetfinal$ed)
 
+# observar a variavel importancia da religia "q5b"
+head(datasetfinal$q5b)
+str(datasetfinal$q5b)
+table(datasetfinal$q5b)
+# tratando a variavel - limpando os niveis de fatores nao utilizados
+
+datasetfinal$q5b <- droplevels(datasetfinal$q5b)
+
+# verificando se deu certo
+table(datasetfinal$q5b)
+
 
 # criando a variavel indice de  progressismo  para formar o modelo ####
 
@@ -254,27 +274,28 @@ library(ggplot2)
 # grafico sobre o posicionamento sobre aborto ####
 table(datasetfinal$aborto)
 # criando data frame para o grafico
-g.aborto <- data.frame(posicao = c("Contra", " A favor"), qntd = c(6469,10872))
+g.aborto <- data.frame(posicao = c("Against", "Accepts"), qntd = c(6469,10872))
 
 ggplot(g.aborto, aes(y = qntd, x = posicao )) + 
   geom_bar(stat = "identity", fill = c("lightcoral", "lightblue")) + 
-  labs(y = "Total", x = "Posicionamento",title = "Posicionameto sobre Aborto em caso de risco para Gestante") + theme_classic (base_size = 16,base_family = 'serif')
+  labs(y = "Total", x = "Position",title = "Acceptance of Abortion in case of\n risk for the mother") + theme_classic (base_size = 16,base_family = 'serif')
 
-# grafico de distribui??o de,0 5 ra?a na pesquisa ####
+# grafico de distribui??o de raca na pesquisa ####
 
 table(datasetfinal$etnia)
 
 # criando a datafrane para o grafico
 
-g.etnia <- data.frame(Cor = c("Branco", "Nao Branco"), qntd = c(5771,11545))
+g.etnia <- data.frame(Cor = c("Not White", "White"), qntd = c(11545,5771))
 
 ggplot(g.etnia, aes(y=qntd, x = Cor)) + 
-  geom_bar(stat = "identity", fill = c("tan", "tan4")) +
-  labs ( y = "Total", x = "Cor", title = " Distribui??o dos entrevistados por Cor") + theme_classic (base_size = 16,base_family = 'serif')
+  geom_bar(stat = "identity", fill = c("tan4", "tan")) +
+  labs ( y = "Total", x = "Color", title = " Distribution of Sample by Color") + theme_classic (base_size = 16,base_family = 'serif')
 
+# criando histogramas ####
 
-
-# histograma de distribui??o dos anos escolares da amostra populacional
+#
+# histograma de distribuicao dos anos escolares da amostra populacional ####
 
 ## Criando dataframe para histograma
 t.educacao <- table(datasetfinal$ed) #salvando tabela de frequencia
@@ -290,11 +311,11 @@ g.educacao$rotulos <- reorder(g.educacao$rotulos,
 
 ggplot(g.educacao, aes(x = rotulos, y = frequencia)) + # componentes elementares
   geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico 
-  labs(y = "Frequ?ncia", x = "") + # rotulos 
+  labs(y = "Frequencia", x = "") + # rotulos 
   theme_classic(base_size = 16,        # definindo trabalho da letra
                 base_family = 'serif') # definindo tipo da letra
 
-## criando dataframe para histograma de renda
+## criando dataframe para histograma de renda ####
 
 t.renda <- table(datasetfinal$q10new)
 
@@ -308,7 +329,7 @@ g.renda$rotulos <- reorder(g.renda$rotulos, g.renda$ordem)
 ggplot(g.renda, aes(x= rotulos, y = frequencia)) + geom_histogram(stat = "identity") + theme_classic()
 
 
-# criando histograma para apresentar a variavel d.5
+# criando histograma para apresentar a variavel d.5 ####
 
 t.d5 <- table(datasetfinal$d5)
 
@@ -322,7 +343,7 @@ g.d5$rotulos <- reorder(g.d5$rotulos, g.d5$ordem)
 # solicitando o grafico
 ggplot(g.d5, aes(x = rotulos, y = frequencia)) + geom_histogram(stat = "identity") + theme_classic()
 
-# criando histograma para apresentar a variavel d.6
+# criando histograma para apresentar a variavel d.6 ####
 
 t.d6<- table(datasetfinal$d6)
 
@@ -339,8 +360,27 @@ g.d6$rotulos <- reorder(g.d6$rotulos, g.d6$ordem)
 ggplot(g.d6, aes(x=rotulos, y=frequencia)) + geom_histogram(stat = "identity") + theme_classic()
 
 
-#  criando graficos bivariados
 
+# criando histograma para a variavel dependente prog ####
+t.prog<- table(datasetfinal$prog) #salvando tabela de frequencia
+
+# Definindo dataframe e suas variáveis
+g.prog <- data.frame(rotulos = names(t.prog), # rotulo 
+                         frequencia = c(t.prog),  # frequencia
+                         ordem = 1:length(t.prog))# ordem dos rotulos
+
+# Reordenando os rotulos para ficarem na ordem crescente
+g.prog$rotulos <- reorder(g.prog$rotulos,g.prog$ordem)
+
+ggplot(g.prog, aes(x = rotulos, y = frequencia)) + # componentes elementares
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico 
+  labs(y = "Frequency", x = "") + # rotulos 
+  theme_classic(base_size = 16,        # definindo trabalho da letra
+                base_family = 'serif') # definindo tipo da letra
+
+
+#  criando graficos bivariados ####
+# grafico de aceitacao do aborto por gênero ####
 # criando a tabela
 
 t.abortogen <- table(datasetfinal$aborto, datasetfinal$gen)
@@ -368,7 +408,7 @@ g.abortogen <- data.frame( aborto = c("contra aborto","a favor aborto", "contra 
 
 ggplot(g.abortogen, aes(x= sexo, y = frequencia, fill=aborto)) + geom_bar(stat = "identity") + theme_classic()
 
-# aceitação do aborto por raça
+# aceitação do aborto por raça ####
 
 # criando a tabela 
 t.abortetnia <- table(datasetfinal$aborto, datasetfinal$etnia)
@@ -401,21 +441,24 @@ g.abortetnia <- data.frame(aborto = c("contra aborto", "aceita aborto", "contra 
 
 ggplot(g.abortetnia, aes(x = cor,y = frequencia, fill = aborto)) + geom_bar(stat = "identity") + theme_classic()
 
-# gerando boxplots
+# gerando boxplots ####
+
+# boxplot para apresentar renda ####
 
 g.brenda <- data.frame( renda = datasetfinal$q10new)
 
 ggplot(g.brenda, aes(y = renda )) + geom_boxplot() + theme_classic() 
 
 
-# boxplot de anos de educação
+# boxplot de anos de educação ####
 
 g.bed <- data.frame(educ = datasetfinal$ed)
 
 ggplot(g.bed, aes(y= educ)) + geom_boxplot() + theme_classic()
 
+
 # boxplot bivariado 
-# anos de educação por gênero
+# anos de educação por gênero ####
 g.gened <- data.frame(educ = datasetfinal$ed, gen = datasetfinal$gen)
 g.gened$gen <- ifelse(g.gened$gen == 1, "Mulher", "Homem")
 g.gened <- na.omit(g.gened)
@@ -424,20 +467,94 @@ ggplot(g.gened, aes(y =educ, x = gen)) + geom_boxplot() + theme_classic()
 
 
 
-# criando o modelo de regressão  
-reg01 <- lm(data= datasetfinal, prog ~ gen + ed + q2 + etnia + q10new + pais )
+# criando o modelo de regressão #### 
+reg01 <- lm(data= datasetfinal, prog ~ gen + ed + q2 + etnia + q5b + q10new + pais )
 
-
+# tabela da regressao 
 summary(reg01)
 confint(reg01)
 
+# grafico
 
-plot(reg01,which = 1)
+dwplot(reg01)
 
+
+
+# solicitando a media dos residuos
+
+mean(residuals(reg01))
+
+# solicitando distribuicao dos residuos
+
+hist(residuals(reg01))
+
+# solicitando grafico de homecedasticidade
+
+# construindo ggplot para o modelo de regressao
 residuals(reg01)
+
 
 predict(reg01)
 
+
+# criacao do dataframe do ggplot
 dreg01 <- data.frame(residuos = residuals(reg01), preditos = predict(reg01))
 
+# solicitando o ggplot
 ggplot(dreg01, aes(x = preditos, y = residuos)) + geom_point() + geom_abline(slope = 0, intercept = 0) + theme_classic()
+
+# verificando a multicolineariedade
+
+library(car)
+vif(reg01) 
+
+# testando a hipótese interativa
+
+reg02 <- lm(data= datasetfinal, prog ~ gen + ed + gen*ed + q2 + etnia + q5b + q10new + pais )
+
+# resultado do modelo testando a h.interativa
+
+summary(reg02)
+confint(reg02)
+
+# grafico do segundo modelo
+
+dwplot(reg02)
+
+# grafico do teste da hipotese interativa
+plot_model(reg02,type = "pred", terms = "ed", "gen")
+
+#aqui solicito a tabela da ANOVA  para analisar a variacao dos modelos
+
+anova(reg01,reg02)
+
+
+# solicitando a media dos residuos
+
+mean(residuals(reg02))
+
+# solicitando distribuicao dos residuos
+
+hist(residuals(reg02))
+
+# solicitando grafico de homecedasticidade
+
+# construindo ggplot para o modelo de regressao
+residuals(reg02)
+
+
+predict(reg02)
+
+
+# criacao do dataframe do ggplot
+dreg02 <- data.frame(residuos = residuals(reg02), preditos = predict(reg02))
+
+# solicitando o ggplot
+ggplot(dreg02, aes(x = preditos, y = residuos)) + geom_point() + geom_abline(slope = 0, intercept = 0) + theme_classic()
+
+# verificando a multicolineariedade
+
+
+vif(reg02) 
+
+
