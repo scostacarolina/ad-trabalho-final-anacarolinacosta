@@ -22,9 +22,9 @@ fontsize: 12 pt
 
 
 
-**GitHub Repository:** [link](www.facebook.com) 
+**GitHub Repository:** [Access Github](https://github.com/scostacarolina/ad-trabalho-final-anacarolinacosta) 
 
-**DataVerse Repository:** [link](www.rstudio.com) 
+**DataVerse Repository:** [Acsess DataVerse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/GB0OA1) 
 
 \newpage
 

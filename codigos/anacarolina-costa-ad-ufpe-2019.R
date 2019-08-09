@@ -267,20 +267,16 @@ datasetfinal$prog
 head(datasetfinal$prog)
 summary(datasetfinal$prog)
 
-# graficos de frequencia de dummys ####
+# ANALISE EXPLORATORIA DE DADOS ####
 
-library(ggplot2)
-
-# grafico sobre o posicionamento sobre aborto ####
+# todos as tabelas e dataframes dos graficos 
+# tabela do grafico de posicionamento do aborto
 table(datasetfinal$aborto)
+
 # criando data frame para o grafico
 g.aborto <- data.frame(posicao = c("Against", "Accepts"), qntd = c(6469,10872))
 
-ggplot(g.aborto, aes(y = qntd, x = posicao )) + 
-  geom_bar(stat = "identity", fill = c("lightcoral", "lightblue")) + 
-  labs(y = "Total", x = "Position",title = "Acceptance of Abortion in case of\n risk for the mother") + theme_classic (base_size = 16,base_family = 'serif')
-
-# grafico de distribui??o de raca na pesquisa ####
+# tabela do grafico de distribuicao de raca da amostra
 
 table(datasetfinal$etnia)
 
@@ -288,22 +284,84 @@ table(datasetfinal$etnia)
 
 g.etnia <- data.frame(Cor = c("Not White", "White"), qntd = c(11545,5771))
 
+
+# Criando dataframe para histograma da variavel ed
+t.educacao <- table(datasetfinal$ed) #salvando tabela de frequencia
+
+# Definindo dataframe e suas variáveis
+g.educacao <- data.frame(rotulos = names(t.educacao), # rotulo 
+                         frequencia = c(t.educacao),  # frequencia
+                         ordem = 1:length(t.educacao))# ordem dos rotulos
+
+# tabela do histograma de renda
+t.renda <- table(datasetfinal$q10new)
+
+# definindo df e suas variaveis
+g.renda <- data.frame(rotulos = names(t.renda), frequencia = c(t.renda), ordem = 1:length(t.renda))
+
+# tabela da variavel d5
+t.d5 <- table(datasetfinal$d5)
+
+# definindo o df e suas variaveis
+
+g.d5 <- data.frame(rotulos=names(t.d5), frequencia = c(t.d5), ordem = 1:length(t.d5))
+
+# tabela da variavel d6
+t.d6<- table(datasetfinal$d6)
+
+# definindo o df e suas variaveis
+
+g.d6 <- data.frame(rotulos=names(t.d6), frequencia = c(t.d6), ordem = 1:length(t.d6))
+
+# variavel prog
+t.prog<- table(datasetfinal$prog) #salvando tabela de frequencia de prog 
+
+# Definindo dataframe e suas variáveis
+g.prog <- data.frame(rotulos = names(t.prog), # rotulo 
+                     frequencia = c(t.prog),  # frequencia
+                     ordem = 1:length(t.prog))# ordem dos rotulos
+
+# grafico de aceitacao do aborto por gênero ####
+# criando a tabela
+
+t.abortogen <- table(datasetfinal$aborto, datasetfinal$gen)
+
+
+
+# definindo o nome das linhas da tabela
+row.names(t.abortogen) <- c("Against", "Accepts")
+
+
+
+# definindo o nome das colunas da tabela
+
+colnames(t.abortogen) <- c("male", "female")
+
+
+
+# crinado o df para o grafico
+
+g.abortogen <- data.frame( aborto = c("Against Abortion","Accepts Abortion", "Against Abortion", "Accepts Abortion"),
+                           sexo = c("male","male", "female", "female"),
+                           frequencia = c(3170, 5452, 3299, 5420))
+
+
+# grafico sobre o posicionamento sobre aborto ####
+
+
+ggplot(g.aborto, aes(y = qntd, x = posicao )) + 
+  geom_bar(stat = "identity", fill = c("lightcoral", "lightblue")) + 
+  labs(y = "Total", x = "Position",title = "Acceptance of Abortion in case of\n risk for the mother") + theme_classic (base_size = 16,base_family = 'serif')
+
+# grafico de distribuiçao de raca na pesquisa ####
+
 ggplot(g.etnia, aes(y=qntd, x = Cor)) + 
   geom_bar(stat = "identity", fill = c("tan4", "tan")) +
   labs ( y = "Total", x = "Color", title = " Distribution of Sample by Color") + theme_classic (base_size = 16,base_family = 'serif')
 
 # criando histogramas ####
 
-#
 # histograma de distribuicao dos anos escolares da amostra populacional ####
-
-## Criando dataframe para histograma
-t.educacao <- table(datasetfinal$ed) #salvando tabela de frequencia
-
-# Definindo dataframe e suas variÃ¡veis
-g.educacao <- data.frame(rotulos = names(t.educacao), # rotulo 
-                         frequencia = c(t.educacao),  # frequencia
-                         ordem = 1:length(t.educacao))# ordem dos rotulos
 
 # Reordenando os rotulos para ficarem na ordem crescente
 g.educacao$rotulos <- reorder(g.educacao$rotulos, 
@@ -311,45 +369,40 @@ g.educacao$rotulos <- reorder(g.educacao$rotulos,
 
 ggplot(g.educacao, aes(x = rotulos, y = frequencia)) + # componentes elementares
   geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico 
-  labs(y = "Frequencia", x = "") + # rotulos 
+  labs(y = "Frequency", x = "Completed Years of Education", title = "Distribution of Sample\n By Educational Level") + # rotulos 
   theme_classic(base_size = 16,        # definindo trabalho da letra
                 base_family = 'serif') # definindo tipo da letra
 
 ## criando dataframe para histograma de renda ####
 
-t.renda <- table(datasetfinal$q10new)
 
-# definindo df e suas variaveis
-g.renda <- data.frame(rotulos = names(t.renda), frequencia = c(t.renda), ordem = 1:length(t.renda))  
-
-# fazer a ordenaÃ§Ã£o do grafico
+# fazer a ordenação do grafico
 g.renda$rotulos <- reorder(g.renda$rotulos, g.renda$ordem)
 
 # gerando o grafico
-ggplot(g.renda, aes(x= rotulos, y = frequencia)) + geom_histogram(stat = "identity") + theme_classic()
+ggplot(g.renda, aes(x= rotulos, y = frequencia)) + # componentes elementares 
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico
+  labs(y = "Frequency", x = "Levels of Income", title = "Distribution of Sample\n By Incomes Levels") + # rotulos 
+  theme_classic(base_size = 16,        # definindo trabalho da letra
+                base_family = 'serif') # definindo tipo da letra
+
 
 
 # criando histograma para apresentar a variavel d.5 ####
-
-t.d5 <- table(datasetfinal$d5)
-
-# definindo o df e suas variaveis
-
-g.d5 <- data.frame(rotulos=names(t.d5), frequencia = c(t.d5), ordem = 1:length(t.d5))
 
 # ordendando o grafico
 g.d5$rotulos <- reorder(g.d5$rotulos, g.d5$ordem)
 
 # solicitando o grafico
-ggplot(g.d5, aes(x = rotulos, y = frequencia)) + geom_histogram(stat = "identity") + theme_classic()
+ggplot(g.d5, aes(x = rotulos, y = frequencia)) + # componentes elementares 
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico
+  labs(y = "Frequency", x = "Gay People in Public Office", title = "Distribution of Sample by\n Acceptance of Gay People in Public Office") + # rotulos 
+  theme_classic(base_size = 16,        # definindo trabalho da letra
+                base_family = 'serif') # definindo tipo da letra
+
 
 # criando histograma para apresentar a variavel d.6 ####
 
-t.d6<- table(datasetfinal$d6)
-
-# definindo o df e suas variaveis
-
-g.d6 <- data.frame(rotulos=names(t.d6), frequencia = c(t.d6), ordem = 1:length(t.d6))
 
 # reordenar o grafico
 
@@ -357,89 +410,68 @@ g.d6$rotulos <- reorder(g.d6$rotulos, g.d6$ordem)
 
 # solicitando o grafico
 
-ggplot(g.d6, aes(x=rotulos, y=frequencia)) + geom_histogram(stat = "identity") + theme_classic()
+ggplot(g.d6, aes(x=rotulos, y=frequencia)) + # componentes elementares 
+  geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico
+  labs(y = "Frequency", x = "Gay People Marriage", title = "Distribution of Sample by\n Acceptance of Gay People Marriage") + # rotulos 
+  theme_classic(base_size = 16,        # definindo trabalho da letra
+                base_family = 'serif') # definindo tipo da letra
 
 
 
 # criando histograma para a variavel dependente prog ####
-t.prog<- table(datasetfinal$prog) #salvando tabela de frequencia
-
-# Definindo dataframe e suas variÃ¡veis
-g.prog <- data.frame(rotulos = names(t.prog), # rotulo 
-                         frequencia = c(t.prog),  # frequencia
-                         ordem = 1:length(t.prog))# ordem dos rotulos
 
 # Reordenando os rotulos para ficarem na ordem crescente
 g.prog$rotulos <- reorder(g.prog$rotulos,g.prog$ordem)
 
 ggplot(g.prog, aes(x = rotulos, y = frequencia)) + # componentes elementares
   geom_histogram(stat = "identity", fill = c("dodgerblue2")) + # definindo grafico 
-  labs(y = "Frequency", x = "") + # rotulos 
+  labs(y = "Frequency", x = " Progressive Index", title = "Distribution of Sample by\n Progressive Index") + # rotulos 
   theme_classic(base_size = 16,        # definindo trabalho da letra
                 base_family = 'serif') # definindo tipo da letra
 
 
+
 #  criando graficos bivariados ####
-# grafico de aceitacao do aborto por gÃªnero ####
-# criando a tabela
 
-t.abortogen <- table(datasetfinal$aborto, datasetfinal$gen)
+# gerar o grafico de aceitacao de aborto por genero 
 
-t.abortogen
+ggplot(g.abortogen, aes(x= sexo, y = frequencia, fill=aborto)) + 
+  geom_bar(stat = "identity") + 
+  labs(x = "Gender", y = "Frequency", fill = "Abortion", title = "Position on Abortion\n Subdivided by Gender" ) + 
+  theme_classic()
 
-# definindo o nome das linhas da tabela
-row.names(t.abortogen) <- c("contra", "a favor")
+# aceitação do aborto por raça ####
 
-t.abortogen
-
-# definindo o nome das colunas da tabela
-
-colnames(t.abortogen) <- c("homem", "mulher")
-
-t.abortogen
-
-# crinado o df para o graficp
-
-g.abortogen <- data.frame( aborto = c("contra aborto","a favor aborto", "contra aborto", "a favor aborto"),
-                           sexo = c("homem","homem", "mulher", "mulher"),
-                           frequencia = c(3170, 5452, 3299, 5420))
-
-# gerar o grafico
-
-ggplot(g.abortogen, aes(x= sexo, y = frequencia, fill=aborto)) + geom_bar(stat = "identity") + theme_classic()
-
-# aceitaÃ§Ã£o do aborto por raÃ§a ####
-
-# criando a tabela 
+# criando a tabela da aceitacao do aborto por raca 
 t.abortetnia <- table(datasetfinal$aborto, datasetfinal$etnia)
 
-t.abortetnia
+
 # colocando o nome das linhas da tabela
 row.names(t.abortetnia) <- c("contra", "aceita")
 
-t.abortetnia
+
 
 # colocando o nome das colunas
 
-colnames(t.abortetnia) <- c("nÃ£o branco", "branco")
+colnames(t.abortetnia) <- c("não branco", "branco")
 
-t.abortetnia
+
 
 # ajustanto os valores para porcentagens
-t.abortetnia[,"nÃ£o branco"] <- t.abortetnia[,"nÃ£o branco"] / sum(t.abortetnia[,"nÃ£o branco"]) 
+t.abortetnia[,"não branco"] <- t.abortetnia[,"não branco"] / sum(t.abortetnia[,"não branco"]) 
 t.abortetnia[,"branco"] <- t.abortetnia[, "branco"] /sum(t.abortetnia[,"branco"])
 
-t.abortetnia
-# construindo o dataframe para o graficp
 
-g.abortetnia <- data.frame(aborto = c("contra aborto", "aceita aborto", "contra aborto", "aceita aborto"),
-                           cor = c("nÃ£o branco", "nÃ£o branco", "branco", "branco"), 
+# construindo o dataframe para o grafico
+
+g.abortetnia <- data.frame(aborto = c("Against Abortion", "Accepts Abortion", "Against Abortion", "Accepts Abortion"),
+                           cor = c("Not White", "Not White", "White", "White"), 
                            frequencia = c(37.31, 62.68,36.54,63.45))
 
- 
+
 # gerar o grafico
 
-ggplot(g.abortetnia, aes(x = cor,y = frequencia, fill = aborto)) + geom_bar(stat = "identity") + theme_classic()
+ggplot(g.abortetnia, aes(x = cor,y = frequencia, fill = aborto)) + geom_bar(stat = "identity") + labs(x = "Color", y = "Frequency", fill = "Abortion", title = "Position on Abortion\n Subdivided by Color" ) + theme_classic()
 
 # gerando boxplots ####
 
@@ -447,27 +479,28 @@ ggplot(g.abortetnia, aes(x = cor,y = frequencia, fill = aborto)) + geom_bar(stat
 
 g.brenda <- data.frame( renda = datasetfinal$q10new)
 
-ggplot(g.brenda, aes(y = renda )) + geom_boxplot() + theme_classic() 
+ggplot(g.brenda, aes(y = renda )) + geom_boxplot() + labs(y = "Income", title = "Income Levels Distribution Boxplot") +  theme_classic() 
 
 
-# boxplot de anos de educaÃ§Ã£o ####
+# boxplot de anos de educação ####
 
 g.bed <- data.frame(educ = datasetfinal$ed)
 
-ggplot(g.bed, aes(y= educ)) + geom_boxplot() + theme_classic()
+ggplot(g.bed, aes(y= educ)) + geom_boxplot() + labs(y = "Educational Years", title = "Educational Levels Distribution Boxplot") + theme_classic()
 
 
 # boxplot bivariado 
-# anos de educaÃ§Ã£o por gÃªnero ####
+# anos de educação por gênero ####
 g.gened <- data.frame(educ = datasetfinal$ed, gen = datasetfinal$gen)
 g.gened$gen <- ifelse(g.gened$gen == 1, "Mulher", "Homem")
 g.gened <- na.omit(g.gened)
 
-ggplot(g.gened, aes(y =educ, x = gen)) + geom_boxplot() + theme_classic()
+ggplot(g.gened, aes(y =educ, x = gen)) + geom_boxplot() + labs(y = "Educational Years", x = "Gender", title = "Educational Levels X Gender Distribution  Boxplot")+ theme_classic()
 
 
 
-# criando o modelo de regressÃ£o #### 
+
+# criando o modelo de regressao #### 
 reg01 <- lm(data= datasetfinal, prog ~ gen + ed + q2 + etnia + q5b + q10new + pais )
 
 # tabela da regressao 
